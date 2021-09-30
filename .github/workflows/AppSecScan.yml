@@ -19,17 +19,17 @@ jobs:
         with:
           ruby-version: 2.6
       
-      - name: Static Analysis with Polaris Action
-        uses: devsecops-test/polaris-action@v1
-        with:
-          polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
-          polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-          polarisProjectName: HVP-Dev.IO
+#      - name: Static Analysis with Polaris Action
+#        uses: devsecops-test/polaris-action@v1
+#        with:
+#          polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
+#          polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+#          polarisProjectName: HVP-Dev.IO
 
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: polaris-scan-results.sarif.json
+#      - name: Upload SARIF file
+#        uses: github/codeql-action/upload-sarif@v1
+#        with:
+#          sarif_file: polaris-scan-results.sarif.json
 
 
 #      - name: Software Composition Analysis with Black Duck
