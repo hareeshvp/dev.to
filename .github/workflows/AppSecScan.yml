@@ -10,10 +10,10 @@ jobs:
     name: Synopsys Security Scans
     runs-on: ubuntu-latest
     
-    env:
-      POLARIS_SERVER_URL:  ${{ secrets.POLARIS_SERVER_URL }}
-      POLARIS_ACCESS_TOKEN:  ${{ secrets.POLARIS_ACCESS_TOKEN }}
-      PROJECT: HVP-Dev.IO
+#    env:
+#      POLARIS_SERVER_URL:  ${{ secrets.POLARIS_SERVER_URL }}
+#      POLARIS_ACCESS_TOKEN:  ${{ secrets.POLARIS_ACCESS_TOKEN }}
+#      PROJECT: HVP-Dev.IO
 
     steps:
       - name: Checkout repository
