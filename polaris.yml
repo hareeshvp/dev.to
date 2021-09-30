@@ -1,6 +1,6 @@
 version: "1"
 project:
-  name: Dev.IO-Test
+#  name: Dev.IO-Test
   branch: master
   revision:
     name: ${scm.git.commit}
