@@ -23,7 +23,7 @@ jobs:
           ruby-version: 2.6
           
       - name: Static Analysis with Polaris Action
-        uses: devsecops-test/polaris-action
+        uses: devsecops-test/polaris-action@v1
         with:
           polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
           polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
