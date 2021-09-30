@@ -12,6 +12,11 @@ jobs:
   AppSec_Pipeline:
     name: Security Scans
     runs-on: ubuntu-latest
+    
+    env:
+      POLARIS_SERVER_URL:  ${{ secrets.POLARIS_SERVER_URL }}
+      POLARIS_ACCESS_TOKEN:  ${{ secrets.POLARIS_ACCESS_TOKEN }}
+      PROJECT: HVP-Dev.IO
 
     steps:
       - name: Checkout repository
@@ -24,11 +29,9 @@ jobs:
 
       - name: Static Analysis with Polaris
         run: |
-          export POLARIS_SERVER_URL=${{secrets.POLARIS_SERVER_URL}}
-          export POLARIS_ACCESS_TOKEN=${{secrets.POLARIS_ACCESS_TOKEN}}
-          wget -q ${{ secrets.POLARIS_SERVER_URL}}/api/tools/polaris_cli-linux64.zip
-          unzip -j polaris_cli-linux64.zip -d /tmp
-          /tmp/polaris analyze -w
+          curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-linux64.zip
+          unzip -d /tmp -jo polaris_cli-linux64.zip
+          /tmp/polaris --co project.name=$PROJECT analyze -w
           
 #      - name: Static Analysis with Polaris Action
 #        uses: devsecops-test/polaris-action@v1
