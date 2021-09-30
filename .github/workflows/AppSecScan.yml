@@ -36,7 +36,7 @@ jobs:
           polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
           polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
           polarisProjectName: HVP-Dev.IO
-#          polarisAdditionalArgs: --co capture.coverity.autoCapture="enable"
+#          polarisAdditionalArgs: --co project.name="project_name"
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
