@@ -34,7 +34,7 @@ capture:
 analyze:
   mode: central
   coverity:
-    cov-analyze: ["--all", "--webapp-security", "--enable-audit-mode"]
+    cov-analyze: ["--all", "--webapp-security", "--enable-audit-mode", "--enable-brakeman"]
 install:
   coverity:
     version: default
