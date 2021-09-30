@@ -41,7 +41,7 @@ jobs:
       - name: Synopsys Detect Rescan
         run: >
           curl -s -L https://raw.github.com/matthewb66/detect_rescan/main/detect_rescan.sh > detect_rescan.sh; 
-          bash detect_rescan.sh --blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.tools="SIGNATURE_SCAN,DETECTOR" --detect.policy.check.fail.on.severities=ALL --quiet --testxml --report
+          bash detect_rescan.sh --blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.tools="SIGNATURE_SCAN,DETECTOR" --detect.policy.check.fail.on.severities=CRITICAL --quiet --testxml --report
       
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2
