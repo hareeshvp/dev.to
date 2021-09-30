@@ -35,8 +35,8 @@ jobs:
       - name: Software Composition Analysis with Black Duck
         uses: blackducksoftware/github-action@v2
         with:
-          version: 7
-          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.risk.report.pdf=true --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.bom.aggregate.name="dev.io_bom"'
+#          version: 7
+          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.risk.report.pdf=true --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.bom.aggregate.name="dev.io_bom" --detect.tools="SIGNATURE_SCAN,DETECTOR"'
 
 #--detect.project.version.name="v1.0"
 #--detect.tools="SIGNATURE_SCAN,DETECTOR"'
