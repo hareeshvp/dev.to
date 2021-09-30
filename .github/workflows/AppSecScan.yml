@@ -17,10 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
+          bundler-cache: true
           
       - name: Static Analysis with Polaris Action
         uses: devsecops-test/polaris-action@v1
