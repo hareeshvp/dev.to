@@ -24,18 +24,18 @@ jobs:
         with:
           ruby-version: 2.6
 
-      - name: Static Analysis with Polaris
-        run: |
-          curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-linux64.zip
-          unzip -d /tmp -jo polaris_cli-linux64.zip
-          /tmp/polaris --co capture.build.cleanCommands=null --co capture.build.buildCommands=null --co project.name=$PROJECT analyze -w
+#      - name: Static Analysis with Polaris
+#        run: |
+#          curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-linux64.zip
+#          unzip -d /tmp -jo polaris_cli-linux64.zip
+#          /tmp/polaris --co capture.build.cleanCommands=null --co capture.build.buildCommands=null --co project.name=$PROJECT analyze -w
           
-#      - name: Static Analysis with Polaris Action
-#        uses: devsecops-test/polaris-action@v1
-#        with:
-#          polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
-#          polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
-#          polarisProjectName: HVP-Dev.IO
+      - name: Static Analysis with Polaris Action
+        uses: devsecops-test/polaris-action@v1
+        with:
+          polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
+          polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polarisProjectName: HVP-Dev.IO
 
 #      - name: Upload SARIF file
 #        uses: github/codeql-action/upload-sarif@v1
