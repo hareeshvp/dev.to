@@ -1,7 +1,7 @@
 version: "1"
 project:
   name: HVP-Dev.IO
-  branch: master
+  branch: ${scm.git.branch}
   revision:
     name: ${scm.git.commit}
     date: ${scm.git.commit.date}
