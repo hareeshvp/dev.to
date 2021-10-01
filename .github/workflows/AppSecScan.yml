@@ -18,6 +18,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
+      - run: bundle install
       
 #      - name: Static Analysis with Polaris Action
 #        uses: devsecops-test/polaris-action@v1
