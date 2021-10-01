@@ -18,33 +18,30 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.5.3
-      - run: bundle install
+#      - run: bundle install
       
-#      - name: Static Analysis with Polaris Action
-#        uses: devsecops-test/polaris-action@v1
-#        with:
-#          polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
-#          polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-#          polarisProjectName: HVP-Dev.IO
+      - name: Static Analysis with Polaris Action
+        uses: devsecops-test/polaris-action@v1
+        with:
+          polarisServerUrl: ${{ secrets.POLARIS_SERVER_URL }}
+          polarisAccessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polarisProjectName: HVP-Dev.IO
 
-#      - name: Upload SARIF file
-#        uses: github/codeql-action/upload-sarif@v1
-#        with:
-#          sarif_file: polaris-scan-results.sarif.json
-
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: polaris-scan-results.sarif.json
 
 #      - name: Software Composition Analysis with Black Duck
 #        uses: blackducksoftware/github-action@v2
 #        with:
 #          version: 7
-#          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.risk.report.pdf=true --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.bom.aggregate.name="dev.io_bom" --detect.tools="SIGNATURE_SCAN,DETECTOR"'
+#          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.bom.aggregate.name="dev.io_bom" --detect.tools="SIGNATURE_SCAN,DETECTOR"'
 
       - name: Synopsys Detect Rescan
         run: >
           curl -s -L https://raw.github.com/matthewb66/detect_rescan/main/detect_rescan.sh > detect_rescan.sh; 
           bash detect_rescan.sh --blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.tools="SIGNATURE_SCAN,DETECTOR" --quiet --testxml --report
-
-#          bash detect_rescan.sh --blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.description="Demo of Dev.IO Ruby project from GitHub Pipeline" --detect.project.name="HVP-Dev.IO" --detect.project.version.phase=DEVELOPMENT --detect.tools="SIGNATURE_SCAN,DETECTOR" --detect.policy.check.fail.on.severities=CRITICAL --quiet --testxml --report
       
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2
